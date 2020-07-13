@@ -1,0 +1,42 @@
+** User can create, read, update and delete recipes **
+
+Interface
+- User can view recipe form
+- User can submit recipe form
+- User can edit their recipes
+- User can delete a recipe
+
+User Class
+- attributes => name, password
+- user signs up/logs in
+- has many recipes
+
+User Controller & Views
+- get '/users/signup' => renders sign up form
+- post '/users/signup' => processes sign up form, creates user
+- get '/users/login' => renders login form
+- post '/users/login' => processes login form
+- need to set sessions
+- user can view their recipes, '/users/:id/recipes'
+
+Recipes Class
+- attributes => name, ingredients, directions, cook time
+- belongs to User
+
+Recipes Controller & Views
+- '/recipes/new' => renders new recipe form
+- '/recipes' => submits recipe
+- '/recipes' => renders all recipes
+- '/recipes/:id' => renders one instance
+- '/recipes/:id/edit' => renders update form for an instance
+- '/recipes/:id' => updates instance
+- '/recipes/:id/delete' => deletes instance
+
+Where To Start?
+
+- set up my classes
+- set up my database
+- users controller
+- recipes controller
+
+
