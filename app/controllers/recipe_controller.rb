@@ -24,4 +24,26 @@ class RecipeController < ApplicationController
     erb :'/recipes/index'
   end
 
+  get '/recipes/:id/edit' do
+    @recipe = Recipe.find(params[:id])
+    erb :'/recipes/edit'
+  end
+
+  post '/recipes/:id' do
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(
+      name: params[:name], 
+      ingredients: params[:ingredients], 
+      directions: params[:directions], 
+      cook_time: params[:cook_time]
+    )
+    redirect "/recipes/#{@recipe.id}"
+  end
+
+  delete '/recipes/:id/delete' do
+    @recipe = Recipe.find(params[:id])
+    @recipe.delete
+    redirect '/recipes'
+  end
+
 end
