@@ -5,11 +5,13 @@ class RecipeController < ApplicationController
   end
 
   post '/recipes' do
+    user = current_user
     @recipe = Recipe.create(
       name: params[:name], 
       ingredients: params[:ingredients], 
       directions: params[:directions], 
-      cook_time: params[:cook_time]
+      cook_time: params[:cook_time],
+      user_id: session[:user_id]
       )
     redirect "/recipes/#{@recipe.id}"
   end
@@ -43,14 +45,13 @@ class RecipeController < ApplicationController
   #Delete
 
   delete '/recipes/:id/delete' do
-    if logged_in?
-      @recipe = Recipe.find_by_id(params[:id])
-      if @recipe.user_id == session[:user_id]
-        @recipe.delete
-        redirect to '/recipes'
-      end
+    @recipe = Recipe.find_by_id(params[:id])
+    if logged_in? && @recipe.user_id == current_user.id
+      @recipe.destroy
+      redirect to '/recipes'
     else
-      redirect to '/users/login'
+      flash[:message] = "You can't delete someone elses recipe! What's wrong with you?!" #not working yet - must fix
+      redirect to '/recipes'
     end
   end
 

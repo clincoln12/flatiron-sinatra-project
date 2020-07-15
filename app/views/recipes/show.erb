@@ -1,9 +1,12 @@
 Recipe Name: <%= @recipe.name %><br>
 Ingredients: <%= @recipe.ingredients %><br>
 Directions: <%= @recipe.directions %><br>
-Cook Time (in minutes): <%= @recipe.cook_time %><br>
+Cook Time (in minutes): <%= @recipe.cook_time %><br><br>
 
-<form method="post" action="/recipes/<%= @recipe.id %>">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
+<form action="/recipes/<%= @recipe.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="delete">
-</form>
+</form> <br>
+
+<a href="/recipes/new"> Add another Recipe to your list </a><br>
+<a href="/logout"> Log Out </a>
