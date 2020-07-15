@@ -1,4 +1,5 @@
 require './config/environment'
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,11 +8,15 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, 'secret'
-    #register Sinatra::Flash => https://medium.com/karuna-sehgal/building-a-sinatra-app-daf7ee3691f4 (Helps implement flash error messages)
+    register Sinatra::Flash
   end
 
   get "/" do
-    erb :index
+    if !logged_in?
+      erb :index
+    else
+      logged_in_home
+    end
   end
 
   helpers do
@@ -22,6 +27,10 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
+    end
+
+    def logged_in_home
+      redirect to '/recipes'
     end
 
   end
