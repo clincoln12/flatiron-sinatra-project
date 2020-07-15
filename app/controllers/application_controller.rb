@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
     if !logged_in?
       erb :index
     else
+      flash[:message] = "Flash is working"
       logged_in_home
     end
   end
