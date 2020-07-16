@@ -22,7 +22,8 @@ class RecipeController < ApplicationController
   end
 
   get '/recipes' do
-    @recipes = Recipe.all
+    #@recipes = Recipe.all.sort_by { |r| r.name }
+    @recipes = Recipe.where(user_id: current_user.id).sort_by { |r| r.name }
     erb :'/recipes/index'
   end
 

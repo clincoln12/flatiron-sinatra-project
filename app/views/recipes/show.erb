@@ -1,4 +1,4 @@
-Recipe Name: <%= @recipe.name %><br>
+<h1><%= @recipe.name %><br></h1>
 Ingredients: <%= @recipe.ingredients %><br>
 Directions: <%= @recipe.directions %><br>
 Cook Time (in minutes): <%= @recipe.cook_time %><br><br>
@@ -8,5 +8,6 @@ Cook Time (in minutes): <%= @recipe.cook_time %><br><br>
   <input type="submit" value="delete">
 </form> <br>
 
+<a href="/recipes"> Go Back To Your Recipes </a><br>
 <a href="/recipes/new"> Add another Recipe to your list </a><br>
 <a href="/logout"> Log Out </a>
