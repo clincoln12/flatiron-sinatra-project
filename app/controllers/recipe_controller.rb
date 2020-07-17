@@ -10,14 +10,19 @@ class RecipeController < ApplicationController
   end
 
   post '/recipes' do
-    @recipe = Recipe.create(
-      name: params[:name], 
-      ingredients: params[:ingredients], 
-      directions: params[:directions], 
-      cook_time: params[:cook_time],
-      user_id: session[:user_id]
-      )
-    redirect "/recipes/#{@recipe.id}"
+    if params[:name].empty? || params[:ingredients].empty? || params[:directions].empty? || params[:cook_time].empty?
+      flash[:message] = "Be sure to fill out all of the form."
+      redirect to '/recipes/new'
+    else
+      @recipe = Recipe.create(
+        name: params[:name], 
+        ingredients: params[:ingredients], 
+        directions: params[:directions], 
+        cook_time: params[:cook_time],
+        user_id: session[:user_id]
+        )
+      redirect "/recipes/#{@recipe.id}"
+    end
   end
 
   get '/recipes/:id' do
@@ -35,7 +40,7 @@ class RecipeController < ApplicationController
       @recipes = Recipe.where(user_id: current_user.id).sort_by { |r| r.name }
       erb :'/recipes/index'
     else
-      #flash[:message] = "You need to be logged in to view that page"
+      flash[:message] = "You need to be logged in to view that page"
       redirect to '/users/login'
     end
   end
@@ -68,7 +73,7 @@ class RecipeController < ApplicationController
       @recipe.destroy
       redirect to '/recipes'
     else
-      flash[:message] = "You can't delete someone elses recipe! What's wrong with you?!" #not working yet - must fix
+      flash[:message] = "You can't delete someone elses recipe! What's wrong with you?!"
       redirect to '/recipes'
     end
   end

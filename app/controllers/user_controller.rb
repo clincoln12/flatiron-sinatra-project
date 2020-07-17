@@ -9,12 +9,17 @@ class UserController < ApplicationController
   end
 
   post '/users/signup' do
-    @user = User.create(
-      username: params[:username], 
-      password: params[:password]
-      )
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    if params[:username].empty? || params[:password].empty?
+      flash[:message] = "Be sure to fill out the username and password!"
+      redirect to '/users/signup'
+    else
+      @user = User.create(
+        username: params[:username], 
+        password: params[:password]
+        )
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    end
   end
 
   get '/users/' do
