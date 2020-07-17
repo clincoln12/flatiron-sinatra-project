@@ -17,6 +17,11 @@ class UserController < ApplicationController
     redirect "/users/#{@user.id}"
   end
 
+  get '/users/' do
+    flash[:message] = "That username already exists. Please choose another."
+    redirect "/users/signup"
+  end
+
   get '/users/login' do
     erb :'/users/login'
   end

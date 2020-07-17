@@ -1,11 +1,15 @@
 class RecipeController < ApplicationController
 
   get '/recipes/new' do
-    erb :'/recipes/new'
+    if logged_in?
+      erb :'/recipes/new'
+    else
+      flash[:message] = "You need to be logged in to view that page"
+      redirect to '/users/login'
+    end
   end
 
   post '/recipes' do
-    user = current_user
     @recipe = Recipe.create(
       name: params[:name], 
       ingredients: params[:ingredients], 
@@ -17,19 +21,32 @@ class RecipeController < ApplicationController
   end
 
   get '/recipes/:id' do
-    @recipe = Recipe.find(params[:id])
-    erb :'/recipes/show'
+    @recipe = Recipe.find_by_id(params[:id])
+    if @recipe == nil
+      erb :oops
+    else
+      erb :'/recipes/show'
+    end
   end
 
   get '/recipes' do
-    #@recipes = Recipe.all.sort_by { |r| r.name }
-    @recipes = Recipe.where(user_id: current_user.id).sort_by { |r| r.name }
-    erb :'/recipes/index'
+    if logged_in?
+      #@recipes = Recipe.all.sort_by { |r| r.name }
+      @recipes = Recipe.where(user_id: current_user.id).sort_by { |r| r.name }
+      erb :'/recipes/index'
+    else
+      #flash[:message] = "You need to be logged in to view that page"
+      redirect to '/users/login'
+    end
   end
 
   get '/recipes/:id/edit' do
-    @recipe = Recipe.find(params[:id])
-    erb :'/recipes/edit'
+    @recipe = Recipe.find_by(params[:id])
+    if @recipe == nil
+      erb :oops
+    else
+      erb :'/recipes/edit'
+    end
   end
 
   post '/recipes/:id' do

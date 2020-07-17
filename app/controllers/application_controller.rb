@@ -11,11 +11,15 @@ class ApplicationController < Sinatra::Base
     register Sinatra::Flash
   end
 
+  not_found do
+    status 404
+    erb :oops
+  end
+
   get "/" do
     if !logged_in?
       erb :index
     else
-      flash[:message] = "Flash is working"
       logged_in_home
     end
   end
@@ -23,11 +27,13 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      !!current_user
+      #!!current_user
+      !!session[:user_id]
     end
 
     def current_user
-      User.find(session[:user_id])
+      @user ||= User.find(session[:user_id]) 
+      #User.find(session[:user_id])
     end
 
     def logged_in_home
