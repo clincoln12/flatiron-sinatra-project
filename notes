@@ -1,8 +1,8 @@
 ** User can create, read, update and delete recipes **
 
 Interface
-- User can view recipe form
-- User can submit recipe form
+x User can view recipe form
+x User can submit recipe form
 - User can edit their recipes
 - User can delete a recipe
 
@@ -39,4 +39,11 @@ Where To Start?
 - users controller
 - recipes controller
 
+Sessions
 
+1. enable sessions
+2. utilize sessions hash in the methods that persist user data into application
+
+Seeding
+
+- Incase I want to seed: https://medium.com/@gene.y.yoo/seed-your-db-in-15-mins-or-less-fake-data-33c18b10d110

@@ -1,20 +1,40 @@
-<h1><%= @recipe.name %><br></h1>
-Ingredients: <%= @recipe.ingredients %><br>
-Directions: <%= @recipe.directions %><br>
-Cook Time (in minutes): <%= @recipe.cook_time %><br><br>
-
-
-<% if logged_in? && @recipe.user_id == current_user.id %> 
-<form action="/recipes/<%= @recipe.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete">
-</form> <br>
-<% end %><br>
-
-<% if logged_in? && @recipe.user_id == current_user.id %>
-<a href="/recipes/<%= @recipe.id %>/edit"><button class="btn btn-outline-primary">Edit Recipe</button></a>
-<% end %><br><br>
-
-<a href="/recipes"> Go Back To Your Recipes </a><br>
-<a href="/recipes/new"> Add another Recipe to your list </a><br>
-<a href="/logout"> Log Out </a>
+<div class="recipe-show">
+  <div class="recipe-show-header">
+    <h1><%= @recipe.name %><br>
+    </h1>
+    <div class="recipe-show-text-container">
+      <strong>Ingredients</strong>
+      <br />
+      <%= @recipe.ingredients %><br>
+    </div>
+    <div class="recipe-show-header-text-container">
+      <strong>Cook Time</strong>
+      <br />
+      <%= @recipe.cook_time %> minutes
+    </div>
+  </div>
+  <div class="recipe-show-directions">
+    <h2>Directions</h2>
+    <div class="recipe-show-directions-text">
+      <%= @recipe.directions %><br>
+    </div>
+  </div>
+  <div class="recipe-show-buttons">
+    <% if logged_in? && @recipe.user_id == current_user.id %>
+      <form action="/recipes/<%= @recipe.id %>/delete" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <button class="delete-button" type="submit" value="delete">Delete</button>
+      </form>
+    <% end %>
+    <% if logged_in? && @recipe.user_id == current_user.id %>
+      <a href="/recipes/<%= @recipe.id %>/edit">
+        <button class="btn btn-outline-primary">Edit Recipe</button>
+      </a>
+    <% end %>
+  </div>
+  <div class="nav-links">
+    <a href="/recipes"> Go Back To Your Recipes </a><br>
+    <a href="/recipes/new"> Add another Recipe to your list </a><br>
+    <a href="/logout"> Log Out </a>
+  </div>
+</div>

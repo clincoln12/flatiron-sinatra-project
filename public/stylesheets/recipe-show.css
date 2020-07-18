@@ -1,0 +1,60 @@
+.recipe-show {
+  border: 1px solid #dedede;
+  border-radius: 16px;
+}
+.recipe-show .recipe-show-header {
+  border-radius: 16px 16px 0 0;
+  padding: 1em;
+  background-color: #05dac7;
+  color: white;
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+.recipe-show .recipe-show-header .recipe-show-header-text-container {
+  padding: 1em;
+}
+.recipe-show .recipe-show-directions {
+  padding: 0.5em 0;
+  border-bottom: 1px solid #dedede;
+}
+.recipe-show .recipe-show-directions h2 {
+  border: 0 !important;
+  text-align: center;
+}
+.recipe-show .recipe-show-directions .recipe-show-directions-text {
+  padding-left: 1em;
+  color: #464646;
+}
+.recipe-show .recipe-show-buttons {
+  display: flex;
+  padding: 1em;
+}
+.recipe-show .recipe-show-buttons .delete-button {
+  background-color: #DC0416 !important;
+}
+.recipe-show .recipe-show-buttons button {
+  margin-right: 2em;
+  background-color: #acacac;
+  color: white;
+  border: 0;
+  padding: 0.5em 0.75em;
+  font-size: 1em;
+  box-shadow: 0px 4px 5px 0px #a8a8a8;
+  border-radius: 8px;
+}
+.recipe-show .recipe-show-buttons button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.nav-links {
+  padding: 1em;
+}
+.nav-links a {
+  color: blue;
+  text-decoration: none;
+}
+.nav-links a:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
