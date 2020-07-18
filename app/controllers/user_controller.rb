@@ -44,7 +44,7 @@ class UserController < ApplicationController
 
   get '/users/:id' do
     @user = User.find(params[:id])
-    erb :'/users/show'
+    redirect to "/recipes"
   end
 
   get '/logout' do

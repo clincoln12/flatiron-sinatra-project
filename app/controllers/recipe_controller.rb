@@ -29,14 +29,16 @@ class RecipeController < ApplicationController
     @recipe = Recipe.find_by_id(params[:id])
     if @recipe == nil
       erb :oops
-    else
+    elsif logged_in?
       erb :'/recipes/show'
+    else
+      flash[:message] = "You need to be logged in to view that page"
+      redirect "/users/login"
     end
   end
 
   get '/recipes' do
     if logged_in?
-      #@recipes = Recipe.all.sort_by { |r| r.name }
       @recipes = Recipe.where(user_id: current_user.id).sort_by { |r| r.name }
       erb :'/recipes/index'
     else
@@ -45,24 +47,35 @@ class RecipeController < ApplicationController
     end
   end
 
+  #Edit
+
   get '/recipes/:id/edit' do
-    @recipe = Recipe.find_by(params[:id])
+    @recipe = Recipe.find_by(id: params[:id])
     if @recipe == nil
       erb :oops
-    else
+    elsif logged_in? && @recipe.user_id == current_user.id
       erb :'/recipes/edit'
+    else
+      flash[:message] = "You need to be logged in to view that page"
+      redirect to '/users/login'
     end
   end
 
-  post '/recipes/:id' do
-    @recipe = Recipe.find(params[:id])
-    @recipe.update(
-      name: params[:name], 
-      ingredients: params[:ingredients], 
-      directions: params[:directions], 
-      cook_time: params[:cook_time]
-    )
-    redirect "/recipes/#{@recipe.id}"
+  patch '/recipes/:id' do
+    if params[:name].empty? || params[:ingredients].empty? || params[:directions].empty? || params[:cook_time].empty?
+      flash[:message] = "Can't leave any fields blank. Please try again."
+      redirect to "/recipes/#{params[:id]}/edit"
+    else
+      @recipe = Recipe.find_by_id(params[:id])
+      @recipe.update(
+        name: params[:name], 
+        ingredients: params[:ingredients], 
+        directions: params[:directions], 
+        cook_time: params[:cook_time]
+      )
+      flash[:messsage] = "Your recipe has been updated!"
+      redirect to "/recipes/#{@recipe.id}"
+    end
   end
 
   #Delete
