@@ -88,6 +88,7 @@ class RecipeController < ApplicationController
     @recipe = Recipe.find_by_id(params[:id])
     if logged_in? && @recipe.user_id == current_user.id
       @recipe.destroy
+      flash[:message] = "Your recipe was successfully deleted!"
       redirect to '/recipes'
     else
       flash[:message] = "You can't delete someone elses recipe! What's wrong with you?!"

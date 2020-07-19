@@ -34,6 +34,16 @@
     width: 85%;
   }
 
+  .wrapper .flash {
+
+    background-color: #cce5ff;
+    border: 1px solid #b8daff;
+    border-radius: 4px;
+    color: #004055;
+    padding: 0.5em 1em;
+    margin-bottom: 1em;
+  }
+
   h1 {
     font-size: 36px;
     line-height: 54px;
@@ -116,5 +126,6 @@
     font-size: 18px;
     line-height: 24px;
   }
+
 }
 

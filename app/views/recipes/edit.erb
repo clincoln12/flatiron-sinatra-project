@@ -8,6 +8,63 @@
 
 <br />
 
+<h1 style="text-align:center"> Edit your recipe </h1>
+
+<div class="container">
+  <form action="/recipes/<%= @recipe.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">  
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Recipe Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="rname" name="name" value="<%= @recipe.name %>" placeholder="Your recipe name...">
+      </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-25">
+      <label for="subject">Ingredients</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="ingredients" placeholder="Write something..." style="height:200px"><%= @recipe.ingredients %></textarea>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Directions</label>
+      </div>
+      <div class="col-75">
+        <textarea id="subject" name="directions" placeholder="Separate each direction by a comma..." style="height:200px"><%= @recipe.directions %></textarea>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="fname">Cook Time (in minutes)</label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="cooktime" name="cook_time" value="<%= @recipe.cook_time %>" placeholder="Your cook time...">
+    </div>
+  </div>
+
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+
+<!--
+
+<div class ="menu-nav">
+  <ul>
+    <li><a href="/recipes">Home</a></li>
+    <li><a href="/recipes/new">Create Recipe</a></li>
+    <li><a href='/logout'>Logout</a></li>
+  </ul
+</div>
+
+<br />
+
 <h1 style="text-align:center"> Edit Your Recipe </h1>
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
@@ -18,3 +75,5 @@
   Cook Time (in minutes): <input type=number value="<%= @recipe.cook_time %>" name="cook_time">
   <input type=submit>
 <form>
+
+-->

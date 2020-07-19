@@ -26,6 +26,11 @@
   padding-left: 1em;
   color: #464646;
 }
+
+.recipe-show .recipe-show-directions .recipe-show-directions-text li {
+  padding-bottom: 0.5em;
+}
+
 .recipe-show .recipe-show-buttons {
   display: flex;
   justify-content: center;
