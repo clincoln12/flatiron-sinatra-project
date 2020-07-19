@@ -49,6 +49,7 @@ class UserController < ApplicationController
 
   get '/logout' do
     session.clear
+    flash[:danger] = "Logout Successful!"
     redirect to '/users/login'
   end
 end

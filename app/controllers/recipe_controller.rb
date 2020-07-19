@@ -1,5 +1,7 @@
 class RecipeController < ApplicationController
 
+  #Create
+
   get '/recipes/new' do
     if logged_in?
       erb :'/recipes/new'
@@ -25,6 +27,8 @@ class RecipeController < ApplicationController
     end
   end
 
+  #Read
+
   get '/recipes/:id' do
     @recipe = Recipe.find_by_id(params[:id])
     if @recipe == nil
@@ -47,7 +51,7 @@ class RecipeController < ApplicationController
     end
   end
 
-  #Edit
+  #Update
 
   get '/recipes/:id/edit' do
     @recipe = Recipe.find_by(id: params[:id])

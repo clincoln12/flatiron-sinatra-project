@@ -27,13 +27,11 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def logged_in?
-      #!!current_user
       !!session[:user_id]
     end
 
     def current_user
-      @user ||= User.find(session[:user_id]) 
-      #User.find(session[:user_id])
+      @user ||= User.find(session[:user_id])
     end
 
     def logged_in_home
