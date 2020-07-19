@@ -1,10 +1,21 @@
-<h1>Login</h1>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 
 <form action="/users/login" method="POST">
-  Username: <input type=text name="username">
-  Password: <input type=password name="password">
-  <input type=submit>
-<form>
+  <h2>Login</h2>
+  <div class="input-container">
+    <i class="material-icons icon">emoji_emotions</i>
+    <input class="input-field" type="text" placeholder="Username" name="username">
+  </div>
+
+  <div class="input-container">
+    <i class="material-icons icon">vpn_key</i>
+    <input class="input-field" type="password" placeholder="Password" name="password">
+  </div>
+
+  <button type="submit" class="btn">Login</button>
+</form>
 
 <br><br>
-Don't have an account? <p><a href='/users/signup'>Signup</a></p>
+Dont have an account? <p><a href='/users/signup'>Signup</a></p>

@@ -1,3 +1,13 @@
+<div class ="menu-nav">
+  <ul>
+    <li><a href="/recipes">Home</a></li>
+    <li><a href="/recipes/new">Create Recipe</a></li>
+    <li><a href='/logout'>Logout</a></li>
+  </ul
+</div>
+
+<br />
+
 <div class="recipe-show">
   <div class="recipe-show-header">
     <h1><%= @recipe.name %><br>
@@ -16,7 +26,11 @@
   <div class="recipe-show-directions">
     <h2>Directions</h2>
     <div class="recipe-show-directions-text">
-      <%= @recipe.directions %><br>
+      <ol>
+      <% @recipe.directions.split(',').each do |x| %>
+        <li><%= x %></li><br />
+      <% end %>
+      </ol>
     </div>
   </div>
   <div class="recipe-show-buttons">
@@ -31,10 +45,5 @@
         <button class="btn btn-outline-primary">Edit Recipe</button>
       </a>
     <% end %>
-  </div>
-  <div class="nav-links">
-    <a href="/recipes"> Go Back To Your Recipes </a><br>
-    <a href="/recipes/new"> Add another Recipe to your list </a><br>
-    <a href="/logout"> Log Out </a>
   </div>
 </div>

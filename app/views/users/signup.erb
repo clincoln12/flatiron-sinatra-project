@@ -1,10 +1,21 @@
-<h1> Signup Page </h1>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
 
 <form action="/users/signup" method="POST">
-  Username: <input type=text name="username">
-  Password: <input type=password name="password">
-  <input type=submit>
-<form>
+  <h2>Signup</h2>
+  <div class="input-container">
+    <i class="material-icons icon">emoji_emotions</i>
+    <input class="input-field" type="text" placeholder="Username" name="username">
+  </div>
+
+  <div class="input-container">
+    <i class="material-icons icon">vpn_key</i>
+    <input class="input-field" type="password" placeholder="Password" name="password">
+  </div>
+
+  <button type="submit" class="btn">Register</button>
+</form>
 
 <br><br>
 Login Instead? <p><a href='/users/login'>Login</a></p>

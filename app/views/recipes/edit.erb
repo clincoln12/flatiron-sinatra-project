@@ -1,4 +1,14 @@
-<h1> Edit Your Recipe </h1>
+<div class ="menu-nav">
+  <ul>
+    <li><a href="/recipes">Home</a></li>
+    <li><a href="/recipes/new">Create Recipe</a></li>
+    <li><a href='/logout'>Logout</a></li>
+  </ul
+</div>
+
+<br />
+
+<h1 style="text-align:center"> Edit Your Recipe </h1>
 
 <form action="/recipes/<%= @recipe.id %>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="patch">

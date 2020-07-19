@@ -1,9 +1,53 @@
-<h1> What's your new recipe? </h1>
+<div class ="menu-nav">
+  <ul>
+    <li><a href="/recipes">Home</a></li>
+    <li><a href="/recipes/new">Create Recipe</a></li>
+    <li><a href='/logout'>Logout</a></li>
+  </ul
+</div>
 
-<form action="/recipes" method="POST">
-  Recipe Name: <input type=text name="name"><br>
-  Ingredients: <input type=text name="ingredients"><br>
-  Directions: <input type=text name="directions"><br>
-  Cook Time (in minutes): <input type=number name="cook_time"><br>
-  <input type=submit>
-<form>
+<br />
+
+<h1 style="text-align:center"> Whats your new recipe? </h1>
+
+<div class="container">
+  <form action="/recipes" method="POST">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Recipe Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="rname" name="name" placeholder="Your recipe name...">
+      </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-25">
+      <label for="subject">Ingredients</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="ingredients" placeholder="Write something..." style="height:200px"></textarea>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Directions</label>
+      </div>
+      <div class="col-75">
+        <textarea id="subject" name="directions" placeholder="Separate each direction by a comma..." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="fname">Cook Time (in minutes)</label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="cooktime" name="cook_time" placeholder="Your cook time...">
+    </div>
+  </div>
+
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+</div>

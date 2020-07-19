@@ -1,14 +1,21 @@
+<div class ="menu-nav">
+  <ul>
+    <li><a href="/recipes">Home</a></li>
+    <li><a href="/recipes/new">Create Recipe</a></li>
+    <li><a href='/logout'>Logout</a></li>
+  </ul
+</div>
+
+<br />
+
 <h2>Welcome, <%= @user.username %></h2>
 
 <h1>Your Recipes</h1>
 
+<div class="nav-links">
 <% @recipes.each do |recipe| %>
 
   <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a><br>
 
 <% end %>
-
-<br>
-
-<a href="/recipes/new"> Add a Recipe to your list </a><br>
-<a href="/logout"> Log Out </a>
+</div>

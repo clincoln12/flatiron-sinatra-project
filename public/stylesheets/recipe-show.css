@@ -5,7 +5,7 @@
 .recipe-show .recipe-show-header {
   border-radius: 16px 16px 0 0;
   padding: 1em;
-  background-color: #05dac7;
+  background-color: #321D70;
   color: white;
   text-align: center;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
@@ -14,7 +14,8 @@
   padding: 1em;
 }
 .recipe-show .recipe-show-directions {
-  padding: 0.5em 0;
+  padding: 0.5em 1em;
+  box-sizing: border-box;
   border-bottom: 1px solid #dedede;
 }
 .recipe-show .recipe-show-directions h2 {
@@ -27,12 +28,14 @@
 }
 .recipe-show .recipe-show-buttons {
   display: flex;
+  justify-content: center;
   padding: 1em;
 }
 .recipe-show .recipe-show-buttons .delete-button {
-  background-color: #DC0416 !important;
+  background-color: #321D70 !important;
 }
 .recipe-show .recipe-show-buttons button {
+  width: 150px;
   margin-right: 2em;
   background-color: #acacac;
   color: white;
@@ -51,7 +54,7 @@
   padding: 1em;
 }
 .nav-links a {
-  color: blue;
+  color: #1D4072;
   text-decoration: none;
 }
 .nav-links a:hover {
